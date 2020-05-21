@@ -1,0 +1,49 @@
+
+UART Out data format
+
+Data header
+
+ length
+
+Card type
+
+Card number
+
+Bccmt
+
+dataend
+
+0x02
+
+0x09
+
+0x01
+
+SN0-SN3
+
+[Exclusive OR of other data except the end of the data]
+
+0x03
+
+ For example, the data received by the serial port tool is 02 0A 02 2E 00 B6 D7 B5 F2 03
+The first byte 0x02 indicates the beginning of the data.
+The second sector 0x0A indicates that the entire data length is 10 bytes, including data start and data end.
+The third sector 0x02 indicates that the card type is EM4100.
+The fourth sector to the eighth byte (0x2E 0x00 0xB6 0xD7 0xB5) These 5 bytes represent the card number read, and the fourth sector 0x2E is the hidden card number.
+The ninth sector 0xF2 represents the BCC check of the second byte to the eighth byte.
+The tenth section 0x03 indicates the end of the data.
+
+
+127
+02 0a 02 65 00 4b 3f b4  ad 03
+02 0a 02 65 00 49 27 1f  1c 03 
+02 0a 02 1e 00 8a fd 64  05 03
+
+rfid
+    rez
+    02 09 01 df 43 e0 bb cf  03 01000011111000001011101111001111
+    24671404406
+
+0 1101111101000011 1110000010111011 0
+
+0010111011 00100100 00001001 00010000
