@@ -1,0 +1,17 @@
+cache:
+  paths:
+    - node_modules/
+
+build:
+  image: node:10
+  stage: build
+  tags:
+    - docker
+  only:
+    - tags
+  script:
+    - npm login --registry=https://npm.pkg.github.com --scope=@xchovanecv1
+    - npm install --progress=false
+    - npm run build
+    - npm publish
+    - curl -X POST -F token=c0e83951d14a71f19b07a59a3b7c75 -F ref=master -F variables[NEXT_WEB_VERSION]=$(grep '\"version\":' package.json | cut -d\" -f4) https://code.xit.camp/api/v4/projects/440/trigger/pipeline

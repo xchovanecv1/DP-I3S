@@ -1,0 +1,11 @@
+DATABASE_URL: postgres://postgres:postgres@localhost:5432/i3stable3?sslmode=disable
+port: 0.0.0.0:4044
+url_posfix: api
+
+#email_smtp_host: 
+#email_smtp_port: 
+#email_smtp_user: 
+#email_smtp_password: 
+
+#email_from_name: 
+#email_from_address: 

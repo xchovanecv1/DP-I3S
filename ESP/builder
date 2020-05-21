@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run --rm -it --privileged -v /dev/bus/usb:/dev/bus/usb -v /home/viki/DP/ESP/mwifi:/esp/project esp32-tlchn

@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  pgdb:
+    ports:
+      - 5432:5432
+    image: postgres
+    restart: always
+    volumes:
+      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+    networks:
+      - overlay
+  facade:
+    ports:
+      - 4040:4040
+    image: registry.gitlab.com/iiis/backend/facade:amd64-0.1.5
+    restart: always
+    networks:
+      - overlay
+    links:
+      - "pgdb:database"
+    command: "serve --config ./config.yaml"
+  gateway:
+    ports:
+      - 8070:8070
+    image: registry.gitlab.com/iiis/backend/gateway:amd64-0.0.24
+    restart: always
+    networks:
+      overlay:
+      gateway:
+        ipv4_address: 172.20.0.4
+    links:
+      - "facade:facade"
+    command: "serve --gateway http://facade --port 4040"
+
+networks:
+  overlay:
+  gateway:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

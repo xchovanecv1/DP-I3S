@@ -1,0 +1,19 @@
+{
+    "id": null,
+    "created_at": null,
+    "updated_at": null,
+    "name": null,
+    "code": null,
+    "price": null,
+    "acquired_at": null,
+    "room_id": null,
+    "room": {
+        "id": null,
+        "created_at": null,
+        "updated_at": null,
+        "gateways": null,
+        "name": null,
+        "code": null,
+        "user": null
+    }
+}

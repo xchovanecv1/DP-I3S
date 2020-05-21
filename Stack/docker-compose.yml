@@ -1,0 +1,13 @@
+version: '3'
+services:
+  pgdb:
+    ports:
+      - 5432:5432
+    image: postgres
+    restart: always
+    volumes:
+      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+    networks:
+      - overlay  
+networks:
+  overlay:
