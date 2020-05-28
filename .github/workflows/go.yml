@@ -32,7 +32,11 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v ./Facade
+      run: |
+        cd ./Facade
+        go build -v .
 
     - name: Test
-      run: go test -v ./Facade
+      run: |
+        cd ./Facade
+        go test -v .
